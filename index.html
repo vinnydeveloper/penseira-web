@@ -122,9 +122,9 @@
 
           if (response.ok) {
             successMessage.classList.remove("hidden");
-            const responseText = await response.text();
+            const responseData = await response.json();
             const apiResponseElement = document.getElementById("apiResponse");
-            apiResponseElement.textContent = responseText;
+            apiResponseElement.innerHTML = `<strong>Resumo:</strong> ${responseData.resume}<br><strong>Transcrição:</strong> ${responseData.transcription}`;
             apiResponseElement.classList.remove("hidden");
           } else {
             console.error("Erro ao enviar o áudio:", response.status);
